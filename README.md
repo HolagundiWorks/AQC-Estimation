@@ -13,7 +13,8 @@ Part of the **AORMS** product suite ([aorms.in](https://aorms.in)).
 
 ## Status
 
-Scaffold product shell. Domain UI and MSIX packaging land next. Do **not** fork a divergent calc engine — pin AQC tags.
+Scaffold product shell with distinct package id `in.aorms.aqc.estimation` (S9).
+Domain UI and MSIX packaging land next. Do **not** fork a divergent calc engine — pin AQC tags.
 
 ## Develop
 

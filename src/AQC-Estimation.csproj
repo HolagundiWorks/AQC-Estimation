@@ -8,6 +8,9 @@
     <AssemblyName>AQC-Estimation</AssemblyName>
     <Product>AQC Estimation</Product>
     <Version>0.1.0</Version>
+    <!-- S9: distinct installer identity — do not share with BBS / PM -->
+    <ApplicationId>in.aorms.aqc.estimation</ApplicationId>
+    <ApplicationTitle>AQC Estimation</ApplicationTitle>
   </PropertyGroup>
   <ItemGroup>
     <!-- Pin HolagundiWorks/AQC Aorms.Bridge via submodule path when present -->

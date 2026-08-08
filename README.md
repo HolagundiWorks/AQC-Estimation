@@ -7,23 +7,30 @@ Part of the **AORMS** product suite ([aorms.in](https://aorms.in)).
 | | |
 | --- | --- |
 | **Role** | Technical desktop installer |
+| **Package id** | `in.aorms.aqc.estimation` |
 | **Engine** | Shared `bbs_engine` + `Aorms.Bridge` from [AQC](https://github.com/HolagundiWorks/AQC) |
 | **Hub** | [aorms](https://github.com/HolagundiWorks/aorms) — portals / Mongo ops |
 | **Downloads** | [aorms.in/downloads](https://aorms.in/downloads) (signed installers when published) |
 
 ## Status
 
-Scaffold product shell with distinct package id `in.aorms.aqc.estimation` (S9).
-Domain UI and MSIX packaging land next. Do **not** fork a divergent calc engine — pin AQC tags.
+**S9:** Unpackaged WinUI shell + hub Activate/Flush (mirrors AStudio bridge host). Domain UI and MSIX packaging next. Do **not** fork a divergent calc engine — pin AQC tags.
 
 ## Develop
 
-\\\at
+```bat
 git submodule update --init --recursive
-dotnet run --project src\AQC-Estimation.csproj -c Release
-\\\
+build-winui.cmd
+```
 
-Set `ESTI_HUB_URL` for local hub sync smoke tests.
+Or:
+
+```bat
+"%ProgramFiles%\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" ^
+  src\AQC-Estimation.csproj /p:Configuration=Release /p:Platform=x64 /restore
+```
+
+Set `ESTI_HUB_URL` (default `http://127.0.0.1:4000`) for local hub sync smoke tests.
 
 ## Suite map
 

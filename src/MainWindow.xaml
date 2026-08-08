@@ -1,0 +1,46 @@
+<Window
+    x:Class="AQCEstimation.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="AQC Estimation">
+
+    <ScrollViewer>
+        <Grid Padding="24" RowSpacing="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="AQC Estimation" FontSize="28" FontWeight="SemiBold"/>
+                <TextBlock Text="Technical app — BOQ · rate books · measurement (shared bbs_engine)"
+                           Opacity="0.7"/>
+            </StackPanel>
+
+            <Border Grid.Row="1" Padding="16" CornerRadius="8"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Hub bridge" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="HubStatusText" TextWrapping="Wrap"/>
+                    <TextBlock x:Name="LogText" Opacity="0.7" TextWrapping="Wrap" FontFamily="Consolas" FontSize="12"/>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8">
+                <TextBox x:Name="LicenseKeyBox" Width="280" PlaceholderText="License key (HLP-…)"
+                         Header="Activate"/>
+                <Button Content="Activate" Click="Activate_Click" VerticalAlignment="Bottom"/>
+                <Button Content="Flush meta" Click="Flush_Click" VerticalAlignment="Bottom"/>
+                <Button Content="Refresh" Click="Refresh_Click" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="3"
+                       Text="Domain UI (rate books / BOQ) lands next. Do not fork bbs_engine — pin HolagundiWorks/AQC."
+                       Opacity="0.6" TextWrapping="Wrap"/>
+        </Grid>
+    </ScrollViewer>
+</Window>

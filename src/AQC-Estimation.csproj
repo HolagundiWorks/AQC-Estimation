@@ -1,19 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>AQCEstimation</RootNamespace>
     <AssemblyName>AQC-Estimation</AssemblyName>
-    <Product>AQC Estimation</Product>
-    <Version>0.1.0</Version>
-    <!-- S9: distinct installer identity — do not share with BBS / PM -->
-    <ApplicationId>in.aorms.aqc.estimation</ApplicationId>
     <ApplicationTitle>AQC Estimation</ApplicationTitle>
+    <ApplicationId>in.aorms.aqc.estimation</ApplicationId>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>0.1.0</Version>
+    <Company>Human Centric Works</Company>
+    <Product>AQC Estimation</Product>
+    <Authors>Human Centric Works, Hospet</Authors>
+    <Description>AQC Estimation — BOQ / rate books / measurement. Shared bbs_engine via AQC + Aorms.Bridge.</Description>
+    <Copyright>Copyright © 2026 Human Centric Works, Hospet</Copyright>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
+    <!-- Unpackaged S9 shell; MSIX signing deferred to D6. -->
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <DefineConstants>DISABLE_XAML_GENERATED_MAIN</DefineConstants>
   </PropertyGroup>
+
   <ItemGroup>
-    <!-- Pin HolagundiWorks/AQC Aorms.Bridge via submodule path when present -->
-    <ProjectReference Include="..\vendor\AQC\BBSDesktop\Aorms.Bridge\Aorms.Bridge.csproj" Condition="Exists('..\vendor\AQC\BBSDesktop\Aorms.Bridge\Aorms.Bridge.csproj')" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.250108002" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\vendor\AQC\BBSDesktop\Aorms.Bridge\Aorms.Bridge.csproj" />
   </ItemGroup>
 </Project>

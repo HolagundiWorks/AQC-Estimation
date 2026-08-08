@@ -14,23 +14,17 @@ Part of the **AORMS** product suite ([aorms.in](https://aorms.in)).
 
 ## Status
 
-**S9:** Unpackaged WinUI shell + hub Activate/Flush (mirrors AStudio bridge host). Domain UI and MSIX packaging next. Do **not** fork a divergent calc engine — pin AQC tags.
+**S9:** Unpackaged WinUI shell + hub Activate/Flush + `Package.appxmanifest` (`in.aorms.aqc.estimation`). Domain UI next. Do **not** fork a divergent calc engine — pin AQC tags. Code signing = D6.
 
 ## Develop
 
 ```bat
 git submodule update --init --recursive
 build-winui.cmd
+build-msix.cmd
 ```
 
-Or:
-
-```bat
-"%ProgramFiles%\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" ^
-  src\AQC-Estimation.csproj /p:Configuration=Release /p:Platform=x64 /restore
-```
-
-Set `ESTI_HUB_URL` (default `http://127.0.0.1:4000`) for local hub sync smoke tests.
+Set `ESTI_HUB_URL` (default `http://127.0.0.1:4000`) for local hub sync smoke tests. Unsigned MSIX → `artifacts\msix\`.
 
 ## Suite map
 

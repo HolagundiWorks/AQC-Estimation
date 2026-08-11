@@ -4,43 +4,99 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="AQC Estimation">
 
-    <ScrollViewer>
-        <Grid Padding="24" RowSpacing="16">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+    <!-- Thin HCW chrome — ribbon · Fog stage · floating taskbar (no ScaleHost / wellness / clock) -->
+    <Grid Background="{StaticResource HcwFogBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <StackPanel Spacing="4">
-                <TextBlock Text="AQC Estimation" FontSize="28" FontWeight="SemiBold"/>
-                <TextBlock Text="Technical app — BOQ · rate books · measurement (shared bbs_engine)"
-                           Opacity="0.7"/>
-            </StackPanel>
-
-            <Border Grid.Row="1" Padding="16" CornerRadius="8"
-                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                    BorderThickness="1">
-                <StackPanel Spacing="8">
-                    <TextBlock Text="Hub bridge" FontWeight="SemiBold"/>
-                    <TextBlock x:Name="HubStatusText" TextWrapping="Wrap"/>
-                    <TextBlock x:Name="LogText" Opacity="0.7" TextWrapping="Wrap" FontFamily="Consolas" FontSize="12"/>
-                </StackPanel>
+        <!-- Floating soft ribbon 56 -->
+        <Grid Grid.Row="0" Height="56" Margin="16,16,16,8">
+            <Border CornerRadius="8" Background="{StaticResource HcwNeuDarkBrush}" Margin="6,6,0,0"/>
+            <Border CornerRadius="8" Background="{StaticResource HcwNeuLightBrush}" Margin="0,0,6,6"/>
+            <Border CornerRadius="8" Background="{StaticResource HcwSoftBrush}">
+                <Grid Padding="16,0" Height="56">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+                        <TextBlock Text="AQC Estimation" FontSize="16" FontWeight="SemiBold"
+                                   Foreground="{StaticResource HcwInkBrush}"
+                                   FontFamily="{StaticResource HcwFontFamily}"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Text="Technical — BOQ · rate books · measurement"
+                                   Style="{StaticResource HcwLabel}"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Grid Grid.Column="1" Height="35" VerticalAlignment="Center">
+                        <Border CornerRadius="8" Background="{StaticResource HcwNeuDarkBrush}" Margin="3,3,0,0"/>
+                        <Border CornerRadius="8" Background="{StaticResource HcwNeuLightBrush}" Margin="0,0,3,3"/>
+                        <Border CornerRadius="8" Background="{StaticResource HcwSoftBrush}" Padding="10,0">
+                            <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                                <FontIcon Glyph="&#xE99A;" FontSize="14" Foreground="{StaticResource HcwAccentBrush}"/>
+                                <TextBlock Text="Local AI · desktop" Style="{StaticResource HcwLabel}"
+                                           VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Grid>
             </Border>
-
-            <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8">
-                <TextBox x:Name="LicenseKeyBox" Width="280" PlaceholderText="License key (HLP-…)"
-                         Header="Activate"/>
-                <Button Content="Activate" Click="Activate_Click" VerticalAlignment="Bottom"/>
-                <Button Content="Flush meta" Click="Flush_Click" VerticalAlignment="Bottom"/>
-                <Button Content="Refresh" Click="Refresh_Click" VerticalAlignment="Bottom"/>
-            </StackPanel>
-
-            <TextBlock Grid.Row="3"
-                       Text="Domain UI (rate books / BOQ) lands next. Do not fork bbs_engine — pin HolagundiWorks/AQC."
-                       Opacity="0.6" TextWrapping="Wrap"/>
         </Grid>
-    </ScrollViewer>
+
+        <!-- Stage + floating taskbar -->
+        <Grid Grid.Row="1">
+            <ScrollViewer Background="{StaticResource HcwFogBrush}"
+                          Padding="24,24,24,100"
+                          VerticalScrollBarVisibility="Auto">
+                <Grid RowSpacing="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Licence from AORMS Connect (session.json). Domain UI (rate books / BOQ) lands next."
+                               Style="{StaticResource HcwBodyMuted}"/>
+
+                    <Border Grid.Row="1" Style="{StaticResource HcwFlatCard}">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Licence · AORMS Connect" FontWeight="SemiBold"
+                                       Foreground="{StaticResource HcwInkBrush}"
+                                       FontFamily="{StaticResource HcwFontFamily}"/>
+                            <TextBlock Text="Activate only in AORMS Connect. This shell imports session.json into firm.db."
+                                       Style="{StaticResource HcwBodyMuted}" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="HubStatusText" TextWrapping="Wrap"
+                                       Foreground="{StaticResource HcwInkBrush}"/>
+                            <TextBlock x:Name="LogText" Opacity="0.7" TextWrapping="Wrap"
+                                       FontFamily="Consolas" FontSize="12"/>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Grid.Row="2"
+                               Text="Do not fork bbs_engine — pin HolagundiWorks/AQC."
+                               Style="{StaticResource HcwLabel}" TextWrapping="Wrap"/>
+                </Grid>
+            </ScrollViewer>
+
+            <!-- Floating taskbar 60 -->
+            <Grid VerticalAlignment="Bottom" Margin="16,0,16,16" Height="60">
+                <Border CornerRadius="8" Background="{StaticResource HcwNeuDarkBrush}" Margin="6,6,0,0"/>
+                <Border CornerRadius="8" Background="{StaticResource HcwNeuLightBrush}" Margin="0,0,6,6"/>
+                <Border CornerRadius="8" Background="{StaticResource HcwSoftBrush}" Padding="12,0">
+                    <StackPanel Orientation="Horizontal" Spacing="8"
+                                HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button Content="Re-import" Click="ReimportConnectSession_Click"
+                                Style="{StaticResource HcwGhostButton}"
+                                ToolTipService.ToolTip="Re-import %LocalAppData%\AORMS-Connect\session.json"/>
+                        <Button Content="Flush meta" Click="Flush_Click"
+                                Style="{StaticResource HcwDockPrimary}"/>
+                        <Button Content="Refresh" Click="Refresh_Click"
+                                Style="{StaticResource HcwGhostButton}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
 </Window>

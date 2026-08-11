@@ -14,7 +14,7 @@ Part of the **AORMS** product suite ([aorms.in](https://aorms.in)).
 
 ## Status
 
-**S9:** Unpackaged WinUI shell + hub Activate/Flush + `Package.appxmanifest` (`in.aorms.aqc.estimation`). Domain UI next. Do **not** fork a divergent calc engine — pin AQC tags. Code signing = D6.
+**S9:** Unpackaged WinUI shell + Connect licence import / Flush + `Package.appxmanifest` (`in.aorms.aqc.estimation`). Activate only in **AORMS Connect**. Domain UI next. Do **not** fork a divergent calc engine — pin AQC tags. Code signing = D6.
 
 ## Develop
 
